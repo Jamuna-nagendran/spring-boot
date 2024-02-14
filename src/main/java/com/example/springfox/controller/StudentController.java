@@ -63,22 +63,22 @@ public class StudentController {
         return studentService.countStudentsByAgeGreaterThan(age);
     }
 
-//    @PutMapping("/updateAge/{id}/{age}")
-//    @ApiOperation(value = "Update student's age", response = ResponseEntity.class)
-//    private ResponseEntity<String> updateStudentAge(@ApiParam(value = "Student ID", required = true) @PathVariable Integer id,
-//                                                    @ApiParam(value = "New age of the student", required = true) @PathVariable Integer age) {
-//        try {
-//            Student student = studentService.getStudentById(id);
-//            if (student != null) {
-//                student.setAge(age);
-//                studentService.saveOrUpdate(student);
-//                return new ResponseEntity<>("Student with ID " + id + " age updated successfully", HttpStatus.OK);
-//            } else {
-//                return new ResponseEntity<>("Student with ID " + id + " not found", HttpStatus.NOT_FOUND);
-//            }
-//        } catch (Exception exception) {
-//            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+    @PutMapping("/updateAge/{id}/{age}")
+    @ApiOperation(value = "Update student's age", response = ResponseEntity.class)
+    private ResponseEntity<String> updateStudentAge(@ApiParam(value = "Student ID", required = true) @PathVariable Integer id,
+                                                    @ApiParam(value = "New age of the student", required = true) @PathVariable Integer age) {
+        try {
+            Student student = studentService.getStudentById(id);
+            if (student != null) {
+                student.setAge(age);
+                studentService.saveOrUpdate(student);
+                return new ResponseEntity<>("Student with ID " + id + " age updated successfully", HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>("Student with ID " + id + " not found", HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception exception) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 }
